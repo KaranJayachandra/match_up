@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🏸Match Up!</title>
+        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+        <style>
+            button {
+                height: 50px;
+                width: 200px;
+            }
+            .active {
+                background-color:  #27ae60;
+            }
+            .dormant {
+                background-color:  #a93226;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                row-gap: 20px;
+                column-gap: 20px;
+            }
+            .tagline {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+        <h1>🏸Match Up!</h1>
+        <p class="tagline"> Come play with the <a href="https://www.bctsf.nl/">Smashing Fellows</a>! </p>
+        </header>
+        <hr>
+        <div class="players">
+            <h2>Players</h2>
+            <div hx-get="/player-list" hx-swap="outerHTML" hx-trigger="revealed"></div>
+        </div>
+        <footer>
+            Made by <a href="https://karanjayachandra.com/">Karan Jayachandra</a> using <a href="https://htmx.org/">HTMX</a> and <a href="https://flask.palletsprojects.com">Flask</a>
+        </footer>
+    </body>
+</html>

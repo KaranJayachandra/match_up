@@ -1,0 +1,3 @@
+{% macro player_button(player) %}
+<button class={% if player.status %} "active" {% else %} "dormant" {% endif %} hx-post="{{ "/player-toggle/" ~ player.name}}" hx-trigger="click" hx-swap="outerHTML">{{ player.name }}</button>
+{%- endmacro %}
