@@ -1,0 +1,13 @@
+<div id="currentgames" class="grid-container" style="grid-template-columns: 1fr 1fr;">
+{% for game in games %}
+    <div class="grid-item">
+        <h4>Court {{game.court}}</h4>
+        <table>
+            <tbody>
+                <tr> <td> {{game.team_1.player_1}} and {{game.team_1.player_2}} </td> </tr>
+                <tr> <td> {{game.team_2.player_1}} and {{game.team_2.player_2}} </td> </tr>
+            </tbody>
+        </table>
+    </div>
+{% endfor %}
+</div>

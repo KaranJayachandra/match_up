@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="grid-container" style="grid-template-columns: 1fr 1fr 1fr;">
 {% for player in players %}
     <div class="grid-item">
         <button class={% if player.status %} "active" {% else %} "dormant" {% endif %} hx-post="{{ "/player-toggle/" ~ player.name}}" hx-trigger="click" hx-swap="outerHTML">{{ player.name }}</button>

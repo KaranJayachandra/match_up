@@ -1,5 +1,5 @@
 from os import getenv
-from model import PlayerList
+from model import PlayerList, GameList
 from flask import Flask, abort, render_template
 from dotenv import load_dotenv
 
@@ -10,6 +10,8 @@ print("Importing player list...\n")
 PLAYER_LIST = PlayerList(location="data.csv")
 print("List of player:\n")
 print(PLAYER_LIST)
+GAME_LIST = GameList()
+GAME_LIST.set_court_count(4)
 
 app = Flask("Match Up! Backend")
 env_config = getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
@@ -40,3 +42,33 @@ def get_list_of_players():
         "players.j2",
         players=PLAYER_LIST.players,
     )
+
+
+@app.route("/new-games", methods=["POST"])
+def new_games():
+    GAME_LIST.new_round(PLAYER_LIST.get_active_players())
+    return render_template(
+        "games.j2",
+        games=GAME_LIST.games,
+    )
+
+
+@app.route("/reset-games", methods=["POST"])
+def reset_games():
+    GAME_LIST.reset()
+    return render_template(
+        "no_games.j2",
+    )
+
+
+@app.route("/game-list", methods=["GET"])
+def get_list_of_games():
+    if len(GAME_LIST.games) == 0:
+        return render_template(
+            "no_games.j2",
+        )
+    else:
+        return render_template(
+            "games.j2",
+            games=GAME_LIST.games,
+        )
