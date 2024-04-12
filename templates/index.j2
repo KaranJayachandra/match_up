@@ -27,17 +27,20 @@
                 height: 4em;
                 width: 6em;
             }
+            .player-list {
+                grid-template-columns: 1fr 1fr;
+            }
             .game {
                 grid-template-columns: 1fr 1fr;
                 border-style: solid; 
+                border-radius: 10px; 
                 border-color: #00750a;
             }
             .team {
                 border-color: #878787;
-                border-style: dotted;
-                border-width: 2px;
+                border-style: solid;
                 border-radius: 10px; 
-                border-width: medium;
+                border-width: thin;
             }
             button {
                 height: 4em;
@@ -49,6 +52,14 @@
             .dormant {
                 background-color:  #a93226;
             }
+            @media (min-width: 479px) {
+                .game-list {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .player-list {
+                    grid-template-columns: 1fr 1fr 1fr;
+                }
+            }
         </style>
     </head>
     <body>
@@ -56,20 +67,16 @@
         <h1>🏸Match Up</h1>
         <p class="tagline"> Come play with us! </p>
         </header>
-        <hr>
-        <div class="Games">
-            <h2>Games</h2>
+        <h2>Games</h2>
             <div hx-get="/game-list" hx-swap="outerHTML" hx-trigger="revealed"></div>
-            <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
-                <div class="grid-item"><button hx-post="/new-games" hx-trigger="click" hx-target="#currentgames" hx-swap="outerHTML"> New Games </button></div>
-                <div class="grid-item"><button hx-post="/reset-games" hx-trigger="click" hx-target="#currentgames"> Reset </button></div>
-            </div>
+        <hr>
+        <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
+            <div class="grid-item"><button hx-post="/new-games" hx-trigger="click" hx-target="#currentgames" hx-swap="outerHTML"> New Games </button></div>
+            <div class="grid-item"><button hx-post="/reset-games" hx-trigger="click" hx-target="#currentgames"> Reset </button></div>
         </div>
         <hr>
-        <div class="players">
-            <h2>Players</h2>
+        <h2>Players</h2>
             <div hx-get="/player-list" hx-swap="outerHTML" hx-trigger="revealed"></div>
-        </div>
         <footer>
             Made by <a href="https://karanjayachandra.com/">Karan Jayachandra</a> using <a href="https://htmx.org/">HTMX</a> and <a href="https://flask.palletsprojects.com">Flask</a>
         </footer>
