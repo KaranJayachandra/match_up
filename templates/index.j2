@@ -11,6 +11,7 @@
                 text-align: center;
             }
             .grid-container {
+                margin: 5px;
                 display: grid;
                 row-gap: 20px;
                 column-gap: 20px;
@@ -19,9 +20,28 @@
                 align-content: space-evenly;
                 align-items: center;
             }
+            .player {
+                display: flex;
+	            flex-direction: row;
+	            align-items: center;
+                height: 4em;
+                width: 6em;
+            }
+            .game {
+                grid-template-columns: 1fr 1fr;
+                border-style: solid; 
+                border-color: #00750a;
+            }
+            .team {
+                border-color: #878787;
+                border-style: dotted;
+                border-width: 2px;
+                border-radius: 10px; 
+                border-width: medium;
+            }
             button {
-                height: 50px;
-                width: 200px;
+                height: 4em;
+                width: 7em;
             }
             .active {
                 background-color:  #27ae60;

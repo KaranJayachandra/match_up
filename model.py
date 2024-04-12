@@ -84,9 +84,6 @@ class GameList:
     def new_round(self, players: PlayerList):
         number_of_games = min(floor(len(players) / PLAYERS_PER_COURT), self.court)
         number_of_players = number_of_games * PLAYERS_PER_COURT
-        print(number_of_games)
-        print(number_of_players)
-        print(len(players))
         selection = sample(players, number_of_players)
         grouped_selection = divide_chunks(selection, PLAYERS_PER_COURT)
         self.games = [
