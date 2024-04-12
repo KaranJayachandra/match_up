@@ -7,7 +7,7 @@ load_dotenv()
 
 
 print("Importing player list...\n")
-PLAYER_LIST = PlayerList(location="test_data.csv")
+PLAYER_LIST = PlayerList(location="data.csv")
 print("List of player:\n")
 print(PLAYER_LIST)
 
