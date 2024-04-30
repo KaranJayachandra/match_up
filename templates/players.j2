@@ -1,7 +1,8 @@
-<div class="grid-container player-list">
-{% for player in players %}
-    <div class="grid-item">
-        <button class={% if player.status %} "active" {% else %} "dormant" {% endif %} hx-post="{{ "/player-toggle/" ~ player.name}}" hx-trigger="click" hx-prompt="Password?" hx-swap="outerHTML">{{ player.name }}</button>
+<div class="row player-list">
+{% for player in players %}    
+    <div class="col">
+        <button class={% if player.status %} "button success" {% else %} "button outline" {% endif %} hx-post="{{ "/player-toggle/" ~ player.name}}" hx-trigger="click" hx-swap="outerHTML">{{ player.name }}</button>
     </div>
+    {% if loop.index % 4 == 0 %} <div class="is-full-width"></div> {% endif %}
 {% endfor %}
 </div>

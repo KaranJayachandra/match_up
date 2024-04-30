@@ -1,82 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>🏸Match Up</title>
-        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-        <style>
-            .tagline {
-                text-align: center;
-            }
-            .grid-container {
-                margin: 5px;
-                display: grid;
-                row-gap: 20px;
-                column-gap: 20px;
-                justify-content: space-evenly;
-                justify-items: center;
-                align-content: space-evenly;
-                align-items: center;
-            }
-            .player {
-                display: flex;
-	            flex-direction: row;
-	            align-items: center;
-                height: 4em;
-                width: 6em;
-            }
-            .player-list {
-                grid-template-columns: 1fr 1fr;
-            }
-            .game {
-                grid-template-columns: 1fr 1fr;
-                border-style: solid; 
-                border-radius: 10px; 
-                border-color: #00750a;
-            }
-            .team {
-                border-color: #878787;
-                border-style: solid;
-                border-radius: 10px; 
-                border-width: thin;
-            }
-            button {
-                height: 4em;
-                width: 7em;
-            }
-            .active {
-                background-color:  #27ae60;
-            }
-            .dormant {
-                background-color:  #a93226;
-            }
-            @media (min-width: 479px) {
-                .game-list {
-                    grid-template-columns: 1fr 1fr;
-                }
-                .player-list {
-                    grid-template-columns: 1fr 1fr 1fr;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-        <h1>🏸Match Up</h1>
-        <p class="tagline"> Come play with us! </p>
-        <nav>
-            <a href="/player">Player</a>
-            <a href="/player">Admin</a>
-        </nav>
-        </header>
+<head>
+    <!--Basic Page Needs-------------------------------->
+    <meta charset="utf-8">
+    <title>Match Up</title>
+    <!--Mobile Specific Data---------------------------->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Javascript-------------------------------------->
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <!--Styling----------------------------------------->
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <!--Minimal Additional Styling---------------------->
+    <style>
+        button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="code-snippets-visible">
+    <div class="container">
+        <section class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a class="button primary">Home</a>
+                    <a class="button outline active" href="/player">Player</a>
+                </div>
+                <div class="nav-center">
+                    <h1 class="title">Match Up</h1>
+                </div>
+                <div class="nav-right">
+                    <a class="button outline" href="/admin">Admin</a>
+                    <a class="button outline" href="/contact">Contact</a>
+                </div>
+            </nav>
+        </section>
         <h2>Games</h2>
             <div hx-get="/game-list" hx-swap="outerHTML" hx-trigger="revealed"></div>
         <hr>
-        <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
-            <div class="grid-item"><button hx-post="/new-games" hx-trigger="click" hx-target="#currentgames" hx-swap="outerHTML"> New Games </button></div>
-            <div class="grid-item"><button hx-post="/reset-games" hx-trigger="click" hx-target="#currentgames"> Reset </button></div>
+        <div class="row player-list">
+            <div class="col"><button hx-post="/new-games" hx-trigger="click" hx-target="#currentgames" hx-swap="outerHTML"> New Games </button></div>
+            <div class="col"><button hx-post="/reset-games" hx-trigger="click" hx-target="#currentgames"> Reset </button></div>
         </div>
         <hr>
         <h2>Players</h2>
@@ -84,5 +47,6 @@
         <footer>
             Made by <a href="https://karanjayachandra.com/">Karan Jayachandra</a> using <a href="https://htmx.org/">HTMX</a> and <a href="https://flask.palletsprojects.com">Flask</a>
         </footer>
-    </body>
+    </div>
+</body>
 </html>
